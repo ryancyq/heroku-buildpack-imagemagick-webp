@@ -7,30 +7,47 @@ Since this buildpack is building libwebp and ImageMagick from source your first 
 
 ## Usage
 
-This buildpack is meant to be used through 
-[heroku-buildpack-multi](https://github.com/ddollar/heroku-buildpack-multi),
-so in your app you need to:
+List your buildpacks:
 ```
-heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi
+heroku buildpacks -a appname
 ```
 
-Then create a `.buildpacks` file inside your app:
+Add this buildpack to your app (specify hash to lock down verison):
 ```
-https://github.com/gesteves/heroku-buildpack-imagemagick-webp
-https://github.com/heroku/heroku-buildpack-nodejs
+heroku buildpacks:add https://github.com/maximusdominus/heroku-buildpack-imagemagick-webp.git#e5909499a084ff595e56c46307a0a2e906577b30 -a appname
 ```
 
-The second line is for a nodejs buildpack, but it can be any other buildpack you want. If it is not working with yours, please report a bug.
 
-## Verify Installation
+## Verify Installation & Version
 
 You can verify that ImageMagick was built with libwebp support by running the following:
 
 ```
-heroku run "identify -list format"
+heroku run "identify -list format" -a appname
 ```
 
 If the output includes ```WEBP* rw-   WebP Image Format (libwebp 0.4.2)``` then you're all set.
+
+## Verify the correct ImageMagic version
+
+```
+heroku run "identify --version" -a appname
+```
+
+
+If this failed, and you want to clear the buildpack cache to try again, use the `https://github.com/heroku/heroku-repo.git` plungin:
+
+```
+heroku plugins:install https://github.com/heroku/heroku-repo.git -a appname
+heroku repo:purge_cache -a appname
+```
+
+Then, adjust your buildpacks as necessary and re-run your deploy:
+
+```
+git commit --allow-empty -m "Updated buildpacks"
+git push origin master
+```
 
 
 ## LICENSE - "MIT License"
