@@ -62,7 +62,7 @@ if true; then
   export CPPFLAGS="-I$INSTALL_DIR/include"
   export LDFLAGS="-L$INSTALL_DIR/lib"
 
-  ./configure --prefix=$INSTALL_DIR --with-webp --without-x --with-quantum-depth=8 --disable-static
+  ./configure --prefix=$INSTALL_DIR --with-webp --with-gvc=no --with-quantum-depth=8 --disable-static
   make && make install
   cd ..
   rm -rf $IMAGE_MAGICK_DIR
