@@ -13,8 +13,8 @@ CACHE_FILE="$CACHE_DIR/imagemagick-$IMAGE_MAGICK_VERSION-webp-$LIBWEBP_VERSION.t
 mkdir -p $CACHE_DIR
 mkdir -p $VENDOR_DIR
 
-# if [ ! -f $CACHE_FILE ]; then
-if true; then
+if [ ! -f $CACHE_FILE ]; then
+# if true; then
 
   cd $BUILD_DIR
 
