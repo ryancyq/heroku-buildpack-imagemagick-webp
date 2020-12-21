@@ -22,7 +22,7 @@ if [ ! -f $CACHE_FILE ]; then
 
   LIBWEBP_FILE="libwebp-$LIBWEBP_VERSION.tar.gz"
   LIBWEBP_DIR="libwebp-$LIBWEBP_VERSION"
-  LIBWEBP_URL="http://downloads.webmproject.org/releases/webp/$LIBWEBP_FILE"
+  LIBWEBP_URL="https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LIBWEBP_FILE"
 
   echo "-----> Downloading libwebp from $LIBWEBP_URL"
   curl -L --silent $LIBWEBP_URL | tar xz
