@@ -14,8 +14,6 @@ mkdir -p $CACHE_DIR
 mkdir -p $VENDOR_DIR
 
 if [ ! -f $CACHE_FILE ]; then
-# if true; then
-
   cd $BUILD_DIR
 
   # install libwebp
@@ -85,7 +83,7 @@ fi
 
 echo "-----> Updating environment variables"
 
-ln -s $VENDOR_DIR/imagemagick-webp /app/vendor/imagemagick-webp
+# ln -s $VENDOR_DIR/imagemagick-webp /app/vendor/imagemagick-webp
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/imagemagick-webp.sh"
 ACTUAL_INSTALL_PATH="$HOME/vendor/imagemagick-webp"
